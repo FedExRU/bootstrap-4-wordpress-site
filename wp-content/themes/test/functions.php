@@ -44,7 +44,7 @@ if ( ! function_exists( 'test_setup' ) ) :
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
-			'menu-1' => esc_html__( 'Primary', 'test' ),
+			'menu' => esc_html__( 'Primary', 'test' ),
 		) );
 
 		/*
@@ -105,16 +105,28 @@ add_action( 'after_setup_theme', 'test_content_width', 0 );
  */
 function test_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'test' ),
+		'name'          => esc_html__( 'Боковой сайдбар', 'test' ),
 		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'test' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'description'   => esc_html__( 'Добавьте сюда все необходимое', 'test' ),
+		'before_widget' => '<ul id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</ul>',
+		// 'before_title'  => '<h2 class="widget-title">',
+		// 'after_title'   => '</h2>',
 	) );
 }
 add_action( 'widgets_init', 'test_widgets_init' );
+
+add_filter( 'get_custom_logo', 'pu_change_logo_class' );
+
+function pu_change_logo_class( $html ) {
+
+	// раскомментить, если нужно добавить класс для картинки
+    //$html = str_replace( 'custom-logo', 'your-custom-class', $html );
+
+    $html = str_replace( 'custom-logo-link', 'navbar-brand', $html );
+
+    return $html;
+}
 
 /**
  * Enqueue scripts and styles.

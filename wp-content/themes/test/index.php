@@ -63,15 +63,20 @@
         </div> <!-- / .center-sidebar -->
 
         <div class="col-lg-3 col-md-4 order-2 order-lg-3 right-sidebar">
-
-          <ul class="list-group mb-4">
+          <?php 
+            if ( is_active_sidebar( 'sidebar-1' ) ) {
+              dynamic_sidebar( 'sidebar-1' );
+            }
+          ?>
+          <!-- <ul class="list-group mb-4">
             <li class="list-group-item active"> <i class="fa fa-tree mr-2" aria-hidden="true"></i> Все разделы</li>
             <li class="list-group-item"><i class="fa fa-free-code-camp mr-2" aria-hidden="true"></i>Кемпинг</li>
             <li class="list-group-item"><i class="fa fa-binoculars mr-2" aria-hidden="true"></i>Новые места</li>
             <li class="list-group-item"><i class="fa fa-paw mr-2" aria-hidden="true"></i>Животные</li>
             <li class="list-group-item"> <i class="fa fa-suitcase mr-2" aria-hidden="true"></i> Снаряжение</li>
             <li class="list-group-item"> <i class="fa fa-unlock mr-2" aria-hidden="true"></i> Лайфхаки</li>
-          </ul> <!-- / .list-group -->
+          </ul>  -->
+          <!-- / .list-group -->
 
           <h3>Теги</h3>
           <div class="block mb-4">
